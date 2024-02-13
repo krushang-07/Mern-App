@@ -1,10 +1,15 @@
 const express = require("express");
 const app = express();
 
+const middleware = (req, res, next) => {
+  console.log("hellow middleware");
+  next();
+};
+
 app.get("/", (req, res) => {
   res.send("Home page are here!!");
 });
-app.get("/about", (req, res) => {
+app.get("/about", middleware, (req, res) => {
   res.send("about page are here!!");
 });
 app.get("/contact", (req, res) => {
