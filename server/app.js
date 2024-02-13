@@ -1,5 +1,18 @@
+const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
+const DB =
+  "mongodb+srv://krushangsavaliya:abc@123@cluster3.9adpsy3.mongodb.net/mernstack";
+mongoose
+  .connect(
+    "mongodb+srv://k:MxNazrmoyy0dwLFz@cluster4.rpivqou.mongodb.net/mernstack"
+  )
+  .then(() => {
+    console.log("connection done");
+  })
+  .catch((err) => {
+    console.log("not connect", err);
+  });
 
 const middleware = (req, res, next) => {
   console.log("hellow middleware");
