@@ -5,7 +5,7 @@ dotenv.config({
     path: "./config.env",
   });
   
-const DB = process.env.DATABASE;
+const DB = process.env.DATABASE || "mongodb://127.0.0.1/mernstack"
 
 mongoose
     .connect(DB
@@ -16,3 +16,6 @@ mongoose
   .catch((err) => {
     console.log("not connect", err);
   });
+
+
+  //DATABASE=mongodb+srv://k:MxNazrmoyy0dwLFz@cluster4.rpivqou.mongodb.net/mernstack
