@@ -1,18 +1,13 @@
-const mongoose = require("mongoose");
+const dotenv = require("dotenv");
 const express = require("express");
 const app = express();
-const DB =
-  "mongodb+srv://krushangsavaliya:abc@123@cluster3.9adpsy3.mongodb.net/mernstack";
-mongoose
-  .connect(
-    "mongodb+srv://k:MxNazrmoyy0dwLFz@cluster4.rpivqou.mongodb.net/mernstack"
-  )
-  .then(() => {
-    console.log("connection done");
-  })
-  .catch((err) => {
-    console.log("not connect", err);
-  });
+require("./DB/conn");
+
+dotenv.config({
+  path: "./config.env",
+});
+
+const PORT = process.env.PORT;
 
 const middleware = (req, res, next) => {
   console.log("hellow middleware");
@@ -35,6 +30,6 @@ app.get("/signup", (req, res) => {
   res.send("signup page are here!!");
 });
 
-app.listen(8080, () => {
-  console.log("server are running on port:8080");
+app.listen(PORT, () => {
+  console.log(`server are running on port:${PORT}`);
 });
